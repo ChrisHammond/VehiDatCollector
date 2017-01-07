@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Web.Http;
 using DotNetNuke.Instrumentation;
 using Christoc.Modules.VehiDataCollector.Components;
 //using Christoc.Modules.VehiDataCollector.ViewModels;
@@ -30,14 +31,20 @@ using DotNetNuke.Web.Api;
 
 namespace Christoc.Modules.VehiDataCollector.Services
 {
-    class VehiDataCollectorController : DnnApiController
+    public class VehiDataCollectorController : DnnApiController
     {
-        [DnnAuthorize()]
+        //URL to get the list of vehicles
+        //http://dnndev.me/DesktopModules/VehiDataCollector/API/VehiDataCollector.ashx/GetVehicles?moduleid=4428
+
+        [HttpGet]
+        //[DnnAuthorize()]
+        //TODO: make it so we can call without ModuleId to get a list of vehicles
         public HttpResponseMessage GetVehicles()
         {
-            return GetVehicles(ActiveModule.ModuleID);
+            return GetVehicles(4428);
         }
 
+        [HttpGet]
         //[DnnAuthorize(AllowAnonymous = true)]
         public HttpResponseMessage GetVehicles(int moduleId)
         {
@@ -52,7 +59,6 @@ namespace Christoc.Modules.VehiDataCollector.Services
                 var cleanVehicles = new List<Vehicle>();
                 foreach (Vehicle v in vehicles)
                 {
-                    
                     cleanVehicles.Add(v);
                 }
 
@@ -65,32 +71,33 @@ namespace Christoc.Modules.VehiDataCollector.Services
                 return Request.CreateResponse(HttpStatusCode.BadRequest, "error in request"); //todo: probably should localize that?
             }
         }
-        
-        
+
+        [HttpGet]
+        //Sample vehicle call http://dnndev.me/DesktopModules/VehiDataCollector/API/VehiDataCollector.ashx/GetVehicle?vehicleid=1&moduleid=4428
         //[DnnAuthorize(AllowAnonymous = true)]
-        public HttpResponseMessage GetVehicle(int vehicleId)
+        public HttpResponseMessage GetVehicle(int vehicleId, int moduleId)
         {
             try
             {var vc = new VehicleController();
-                var v = vc.GetVehicle(vehicleId,0); //TODO: figure out ModuleId
-
+                var v = vc.GetVehicle(vehicleId,moduleId); //TODO: figure out ModuleId
                 return Request.CreateResponse(HttpStatusCode.OK, v);
-
             }
             catch (Exception exc)
             {
                 DnnLog.Error(exc); //todo: obsolete
                 return Request.CreateResponse(HttpStatusCode.BadRequest, "error in request"); //todo: probably should localize that?
-
             }
         }
 
+        [HttpPost]
         //[DnnAuthorize(AllowAnonymous = true)]
+        [AllowAnonymous]
         public HttpResponseMessage PutEntry(int vehicleId,string entryName, string entryDescription, string entrySource)
         {
             try
             {
                 var e = new Entry();
+                e.EntryName = entryName;
                 e.EntryDescription = entryDescription;
                 e.EntrySource = entrySource;
                 e.CreatedOnDate = DateTime.UtcNow;
