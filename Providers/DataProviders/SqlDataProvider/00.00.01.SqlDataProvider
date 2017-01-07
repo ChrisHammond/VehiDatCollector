@@ -1,0 +1,62 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF EXISTS (SELECT * FROM sys.objects WHERE [object_id] = OBJECT_ID(N'{databaseOwner}[{objectQualifier}VehiDataCollector_Items]') AND type in (N'U'))
+	DROP TABLE {databaseOwner}[{objectQualifier}VehiDataCollector_Items]
+GO
+
+CREATE TABLE {databaseOwner}{objectQualifier}VehiDataCollector_Vehicles
+(
+	[VehicleId] INT NOT NULL IDENTITY (1, 1),
+	[VehicleName] NVARCHAR(MAX) NOT NULL,
+	[VehicleDescription] NVARCHAR(MAX) NOT NULL,
+	[VehicleOwnerUserId] INT NULL,
+	[ModuleId] INT NOT NULL,
+	[CreatedOnDate] DATETIME NOT NULL,
+	[CreatedByUserId] INT NOT NULL,
+	[LastModifiedOnDate] DATETIME NOT NULL,
+	[LastModifiedByUserId] INT NOT NULL
+)
+GO
+
+
+ALTER TABLE {databaseOwner}[{objectQualifier}VehiDataCollector_Vehicles] ADD CONSTRAINT [PK_{objectQualifier}VehiDataCollector_Vehicles] PRIMARY KEY CLUSTERED ([VehicleId])
+GO
+
+
+
+/*VehiDataCollector_Entries*/
+
+IF EXISTS (SELECT * FROM sys.objects WHERE [object_id] = OBJECT_ID(N'{databaseOwner}[{objectQualifier}VehiDataCollector_Entries]') AND type in (N'U'))
+	DROP TABLE {databaseOwner}[{objectQualifier}VehiDataCollector_Entries]
+GO
+
+CREATE TABLE {databaseOwner}{objectQualifier}VehiDataCollector_Entries
+(
+	[EntryId] INT NOT NULL IDENTITY (1, 1),
+	[EntryName] NVARCHAR(MAX) NOT NULL,
+	[EntryDescription] NVARCHAR(MAX) NOT NULL,
+	[EntrySource] NVARCHAR(MAX) NOT NULL,
+	[VehicleId] INT NULL,
+	[ModuleId] INT NULL,
+	[CreatedOnDate] DATETIME NOT NULL,
+	[CreatedByUserId] INT NOT NULL,
+	[LastModifiedOnDate] DATETIME NOT NULL,
+	[LastModifiedByUserId] INT NOT NULL
+)
+GO
+
+
+ALTER TABLE {databaseOwner}[{objectQualifier}VehiDataCollector_Entries] ADD CONSTRAINT [PK_{objectQualifier}VehiDataCollector_Entries] PRIMARY KEY CLUSTERED ([EntryId])
+GO
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

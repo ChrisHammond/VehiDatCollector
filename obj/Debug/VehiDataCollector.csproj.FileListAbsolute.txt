@@ -1,0 +1,6 @@
+c:\websites\dnndev.me\bin\VehiDataCollector.dll
+c:\websites\dnndev.me\bin\VehiDataCollector.pdb
+c:\websites\dnndev.me\desktopmodules\VehiDataCollector\obj\Debug\VehiDataCollector.csprojResolveAssemblyReference.cache
+c:\websites\dnndev.me\desktopmodules\VehiDataCollector\obj\Debug\VehiDataCollector.dll
+c:\websites\dnndev.me\desktopmodules\VehiDataCollector\obj\Debug\VehiDataCollector.pdb
+C:\websites\dnndev.me\bin\VehiDataCollector.dll.config
