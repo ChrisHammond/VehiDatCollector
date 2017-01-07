@@ -144,8 +144,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Documentation\Documentation.css" />
-    <Content Include="Documentation\Documentation.html" />
     <Content Include="Edit.ascx" />
     <Content Include="License.txt" />
     <Content Include="module.css" />
@@ -175,13 +173,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="web.config" />
-    <None Include="web.Debug.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
-    <None Include="web.Release.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
+    <Content Include="README.md" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
