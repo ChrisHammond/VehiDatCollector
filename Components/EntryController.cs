@@ -40,16 +40,28 @@ namespace Christoc.Modules.VehiDataCollector.Components
             }
         }
 
-        public IEnumerable<Entry> GetEntries(int moduleId)
+        //public IEnumerable<Entry> GetEntries(int moduleId)
+        //{
+        //    IEnumerable<Entry> t;
+        //    using (IDataContext ctx = DataContext.Instance())
+        //    {
+        //        var rep = ctx.GetRepository<Entry>();
+        //        t = rep.Get(moduleId);
+        //    }
+        //    return t;
+        //}
+
+        public IEnumerable<Entry> GetEntries(int vehicleId)
         {
             IEnumerable<Entry> t;
             using (IDataContext ctx = DataContext.Instance())
             {
                 var rep = ctx.GetRepository<Entry>();
-                t = rep.Get(moduleId);
+                t = rep.Get(vehicleId);
             }
             return t;
         }
+
 
         public Entry GetEntry(int EntryId, int moduleId)
         {

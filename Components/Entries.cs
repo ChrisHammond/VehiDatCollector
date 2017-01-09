@@ -24,7 +24,7 @@ namespace Christoc.Modules.VehiDataCollector.Components
     //configure caching using PetaPoco
     [Cacheable("Entries", CacheItemPriority.Default, 20)]
     //scope the objects to the ModuleId of a module on a page (or copy of a module on a page)
-    [Scope("ModuleId")]
+    [Scope("VehicleId")]
     class Entry
     {
         ///<summary>

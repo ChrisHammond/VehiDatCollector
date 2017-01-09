@@ -42,8 +42,16 @@ namespace Christoc.Modules.VehiDataCollector
             try
             {
                 var tc = new VehicleController();
-                rptVehicleList.DataSource = tc.GetVehicles(ModuleId);
-                rptVehicleList.DataBind();
+
+                ddlVehicles.DataSource = tc.GetVehicles(ModuleId);
+                ddlVehicles.DataBind();
+
+
+                var vehicleId = Convert.ToInt32(ddlVehicles.SelectedValue);
+
+                var ec = new EntryController();
+                rptEntryList.DataSource = ec.GetEntries(vehicleId);
+                rptEntryList.DataBind();
             }
             catch (Exception exc) //Module failed to load
             {
@@ -51,7 +59,7 @@ namespace Christoc.Modules.VehiDataCollector
             }
         }
 
-        protected void rptVehicleListOnItemDataBound(object sender, RepeaterItemEventArgs e)
+        protected void rptEntryListOnItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.AlternatingItem || e.Item.ItemType == ListItemType.Item)
             {
@@ -60,27 +68,27 @@ namespace Christoc.Modules.VehiDataCollector
 
                 var pnlAdminControls = e.Item.FindControl("pnlAdmin") as Panel;
 
-                var t = (Vehicle)e.Item.DataItem;
+                var t = (Entry)e.Item.DataItem;
 
-                if (IsEditable && lnkDelete != null && lnkEdit != null && pnlAdminControls != null)
-                {
-                    pnlAdminControls.Visible = true;
-                    lnkDelete.CommandArgument = t.VehicleId.ToString();
-                    lnkDelete.Enabled = lnkDelete.Visible = lnkEdit.Enabled = lnkEdit.Visible = true;
+                //if (IsEditable && lnkDelete != null && lnkEdit != null && pnlAdminControls != null)
+                //{
+                //    pnlAdminControls.Visible = true;
+                //    lnkDelete.CommandArgument = t.EntryId.ToString();
+                //    lnkDelete.Enabled = lnkDelete.Visible = lnkEdit.Enabled = lnkEdit.Visible = true;
 
-                    lnkEdit.NavigateUrl = EditUrl(string.Empty, string.Empty, "Edit", "vid=" + t.VehicleId);
+                //    lnkEdit.NavigateUrl = EditUrl(string.Empty, string.Empty, "Edit", "vid=" + t.EntryId);
 
-                    ClientAPI.AddButtonConfirm(lnkDelete, Localization.GetString("ConfirmDelete", LocalResourceFile));
-                }
-                else
-                {
-                    pnlAdminControls.Visible = false;
-                }
+                //    ClientAPI.AddButtonConfirm(lnkDelete, Localization.GetString("ConfirmDelete", LocalResourceFile));
+                //}
+                //else
+                //{
+                //    pnlAdminControls.Visible = false;
+                //}
             }
         }
 
 
-        public void rptVehicleListOnItemCommand(object source, RepeaterCommandEventArgs e)
+        public void rptEntryListOnItemCommand(object source, RepeaterCommandEventArgs e)
         {
             if (e.CommandName == "Edit")
             {
@@ -89,8 +97,8 @@ namespace Christoc.Modules.VehiDataCollector
 
             if (e.CommandName == "Delete")
             {
-                var tc = new VehicleController();
-                tc.DeleteVehicle(Convert.ToInt32(e.CommandArgument), ModuleId);
+                var tc = new EntryController();
+                tc.DeleteEntry(Convert.ToInt32(e.CommandArgument), ModuleId);
             }
             Response.Redirect(DotNetNuke.Common.Globals.NavigateURL());
         }
