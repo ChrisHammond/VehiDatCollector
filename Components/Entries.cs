@@ -25,7 +25,7 @@ namespace Christoc.Modules.VehiDataCollector.Components
     [Cacheable("Entries", CacheItemPriority.Default, 20)]
     //scope the objects to the ModuleId of a module on a page (or copy of a module on a page)
     [Scope("VehicleId")]
-    class Entry
+    public class Entry
     {
         ///<summary>
         /// The ID of your object with the name of the VehicleName
