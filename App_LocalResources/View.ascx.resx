@@ -135,4 +135,7 @@
   <data name="EditModule.Text" xml:space="preserve">
     <value>Add Item</value>
   </data>
+  <data name="lblVehicles.Text" xml:space="preserve">
+    <value>Vehicles</value>
+  </data>
 </root>

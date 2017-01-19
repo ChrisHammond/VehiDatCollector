@@ -46,12 +46,14 @@ namespace Christoc.Modules.VehiDataCollector
                 ddlVehicles.DataSource = tc.GetVehicles(ModuleId);
                 ddlVehicles.DataBind();
 
+                if (ddlVehicles.Items.Count > 0)
+                {
+                    var vehicleId = Convert.ToInt32(ddlVehicles.SelectedValue);
 
-                var vehicleId = Convert.ToInt32(ddlVehicles.SelectedValue);
-
-                var ec = new EntryController();
-                rptEntryList.DataSource = ec.GetEntries(vehicleId);
-                rptEntryList.DataBind();
+                    var ec = new EntryController();
+                    rptEntryList.DataSource = ec.GetEntries(vehicleId);
+                    rptEntryList.DataBind();
+                }
             }
             catch (Exception exc) //Module failed to load
             {

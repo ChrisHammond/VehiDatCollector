@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="View.ascx.cs" Inherits="Christoc.Modules.VehiDataCollector.View" %>
 
+<asp:Label ID="lblVehicles" runat="server" resourcekey="lblVehicles" />
 <asp:DropDownList runat="server" id="ddlVehicles" DataTextField="VehicleName" DataValueField="VehicleId" />
 
 
@@ -11,9 +12,9 @@
     <ItemTemplate>
         <li class="tm_t">
             <h3>
-                <asp:Label ID="lblVehicleName" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"EntryName").ToString() %>' />
+                <asp:Label ID="lbEntryNmae" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"EntryName").ToString() %>' />
             </h3>
-            <asp:Label ID="lblVehicleDescription" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"EntryDescription").ToString() %>' CssClass="tm_td" />
+            <asp:Label ID="lblEntryDescription" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"EntryDescription").ToString() %>' CssClass="tm_td" />
             <asp:Label ID="lblCreatedOnDate" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"CreatedOnDate").ToString() %>' CssClass="tm_td" />
             
 
