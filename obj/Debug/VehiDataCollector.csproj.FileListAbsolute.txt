@@ -3,3 +3,8 @@ c:\websites\dnndev.me\bin\VehiDataCollector.pdb
 c:\websites\dnndev.me\desktopmodules\VehiDataCollector\obj\Debug\VehiDataCollector.csprojResolveAssemblyReference.cache
 c:\websites\dnndev.me\desktopmodules\VehiDataCollector\obj\Debug\VehiDataCollector.dll
 c:\websites\dnndev.me\desktopmodules\VehiDataCollector\obj\Debug\VehiDataCollector.pdb
+C:\websites\backup.dnndev.me\bin\VehiDataCollector.dll
+C:\websites\backup.dnndev.me\bin\VehiDataCollector.pdb
+C:\websites\backup.dnndev.me\DesktopModules\VehiDataCollector\obj\Debug\VehiDataCollector.csprojResolveAssemblyReference.cache
+C:\websites\backup.dnndev.me\DesktopModules\VehiDataCollector\obj\Debug\VehiDataCollector.dll
+C:\websites\backup.dnndev.me\DesktopModules\VehiDataCollector\obj\Debug\VehiDataCollector.pdb

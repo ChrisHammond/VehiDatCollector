@@ -127,25 +127,25 @@
     <value>Edit Control for VehiDataCollector</value>
   </data>
   <data name="lblAssignedUser.Help" xml:space="preserve">
-    <value>Choose a user to assign this object to.</value>
+    <value>Who is the owner of this Vehicle</value>
   </data>
   <data name="lblAssignedUser.Text" xml:space="preserve">
-    <value>Assigned User</value>
+    <value>Vehicle Owner</value>
   </data>
   <data name="lblDescription.Help" xml:space="preserve">
-    <value>Enter a Description for your Item</value>
+    <value>Enter a Description for your Vehicle</value>
   </data>
   <data name="lblDescription.Text" xml:space="preserve">
     <value>Description</value>
   </data>
   <data name="lblName.Help" xml:space="preserve">
-    <value>Enter the Name for your Item</value>
+    <value>Enter the Name for your Vehicle</value>
   </data>
   <data name="lblName.Text" xml:space="preserve">
-    <value>Name</value>
+    <value>Vehicle Name</value>
   </data>
   <data name="BasicSettings.Text" xml:space="preserve">
-    <value>VehiDataCollector Item Basic Settings</value>
+    <value>Vehicle Settings</value>
   </data>
   <data name="ExpandAll.Text" xml:space="preserve">
     <value>Expand All</value>
